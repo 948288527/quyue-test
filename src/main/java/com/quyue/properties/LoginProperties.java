@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
  * 2016-11-01 23:35
  */
 @Component
-@ConfigurationProperties(prefix = "registry")
-public class RegistryProperties {
+@ConfigurationProperties(prefix = "login")
+public class LoginProperties {
 
     private String phone;
 

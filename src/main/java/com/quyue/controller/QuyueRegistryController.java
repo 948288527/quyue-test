@@ -18,6 +18,7 @@ import java.util.List;
  * Created by 廖师兄
  * 2016-11-03 23:15
  */
+@CrossOrigin(origins = "*")  // @CrossOrigin(origins = {"http://localhost:9000", "null"}) 配置请求源解决跨域问题
 @RestController
 public class QuyueRegistryController {
 
@@ -45,19 +46,20 @@ public class QuyueRegistryController {
      * @return
      */
     @PostMapping(value = "/registrys")
-    public Result<Registry> girlAdd(@Valid Registry registry, BindingResult bindingResult) {
+    public Result<Registry> registrysAdd(@Valid Registry registry, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
         }
 
         registry.setPhone(registry.getPhone());
         registry.setPassword(registry.getPassword());
+        registry.setVerificode(registry.getVerificode());
 
         return ResultUtil.success(registryRepository.save(registry));
     }
 
     //查询一个女生
-    @GetMapping(value = "/registrys/{phone}")
+    @GetMapping(value = "/registrys/{id}")
     public Registry registryFindOne(@PathVariable("id") String phone) {
         return registryRepository.findOne(phone);
     }

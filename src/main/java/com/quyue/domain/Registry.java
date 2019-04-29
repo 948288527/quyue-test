@@ -24,6 +24,8 @@ public class Registry {
     @NotNull(message = "密码必填")
     private String password;
 
+    @NotNull(message = "验证码必填")
+    private String verificode;
     public Registry() {
     }
 
@@ -51,12 +53,21 @@ public class Registry {
         this.password = password;
     }
 
+    public String getVerificode() {
+        return verificode;
+    }
+
+    public void setVerificode(String verificode) {
+        this.verificode = verificode;
+    }
+
     @Override
     public String toString() {
         return "Registry{" +
                 "id=" + id +
                 ", phone='" + phone + '\'' +
                 ", password=" + password +
+                ", verificode=" + verificode +
                 '}';
     }
 }
